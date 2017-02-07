@@ -8,6 +8,7 @@ export class GithubService{
     private username:string;
     private client_id= '4d9a9544da50f3627e57';
     private client_secret= '78a266d5ea87b139268c03554af336e00464abcd';
+    //private ACCESS-TOKEN= '';
 
     constructor(private _http: Http){
         console.log('Github Service Ready');
@@ -15,9 +16,13 @@ export class GithubService{
     }
 
     getUser(){
-        return this._http.get('http://api.github.com/users/'+this.username+'?client_id='+this.client_id+'&client_secret='+this.client_secret)
+       return this._http.get('http://api.github.com/users/'+this.username+'?client_id='+this.client_id+'&client_secret='+this.client_secret)
                 .map(res => res.json());
-    }
+/*
+return this._http.get('https://api.instagram.com/v1/users/search?q='+this.username+'&access_token=ACCESS-TOKEN/')
+                .map(res => res.json());
+    */
+}
 
     getRepos(){
         return this._http.get('http://api.github.com/users/'+this.username+'/repos?client_id='+this.client_id+'&client_secret='+this.client_secret)
